@@ -45,8 +45,23 @@ function App() {
   )
 
   const [winner, setWinner] = useState(
-    null
+    null // null = no winner || False = empate
   )
+
+  const chaeckWinner = (boardCheck) => {
+    for (const combo of WINNER_COMBOS){
+      const [a,b,c] = combo
+
+      if (
+        boardCheck[a] &&
+        boardCheck[a] === boardCheck[b] &&
+        boardCheck[a] === boardCheck [c]
+      ) {
+        return boardCheck[a]
+      }
+    }
+    return null
+  }
 
   const updateBoard = (index) => {
     if (board[index]) return
